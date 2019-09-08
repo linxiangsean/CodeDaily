@@ -16,9 +16,9 @@ class reshapeMatrix{
          int size = nums[0].length * nums.length;
          System.out.println("size : " + size);
 
-         //if not legal and not possible:
-         if(size > r*c){
-            System.out.println("The target matrix is not large enough.");
+         //if not legal or not possible:
+         if(size != r*c){
+            System.out.println("The target matrix is not possible or illigal");
         }
 
         //create target space:
