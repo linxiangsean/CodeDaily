@@ -17,18 +17,31 @@ class singleElement{
 
 
     }
+
     public static int solveSingleE(int[] nums){
 
-        if(nums.length == 0 || nums == null){
-            return 0;
-        }
+        int start = 0 ; 
+        int end = nums.length-1;
 
-        for(int i = 0; i < nums.length; i += 2){
-            if(nums[i] != nums[i+1]){
-                return nums[i];
+        while(start < end){
+
+            int mid = (start + end)/2;
+            
+            //if mid % 2 ==1 is true, mid is odd, move it to left since the single element can only checked when mid is at left of a pair.
+            if( mid % 2 ==1 ) mid--;
+
+            if(nums[mid] != nums[mid+1]){
+                // we didnt find a pair
+                //in this situation, single ele is at left half.
+                //make end to the mid.
+                end = mid;
+            }else{
+                //we find a pair, the single ele is at right half
+                start = mid + 2;
             }
         }
-        return Integer.MIN_VALUE;
+        
+        return nums[start];
     }
 
 
